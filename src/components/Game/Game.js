@@ -14,17 +14,6 @@ function Game() {
   // Main state
   const [guesses, setGuesses] = React.useState([]);
 
-  // function guessWord(word) {
-  //   const nextGuess = {
-  //     guess: word,
-  //     id: crypto.randomUUID(),
-  //   };
-  //   // console.log(nextGuess);
-  //   const nextGuesses = [...guesses, nextGuess];
-  //   setGuesses(nextGuesses);
-  //   // console.log(nextGuesses);
-  // }
-
   function handleSubmitGuess(tentativeGuess) {
     setGuesses([...guesses, tentativeGuess]);
   }
@@ -32,7 +21,6 @@ function Game() {
   return (
     <>
       <GuessResults guesses={guesses} />
-      {/* <GuessForm guessWord={guessWord}  /> */}
       <GuessForm handleSubmitGuess={handleSubmitGuess} />
     </>
   );
