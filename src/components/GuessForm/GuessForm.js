@@ -7,18 +7,22 @@ import React from "react";
  * All uppercase
  */
 
-function GuessForm({ guessWord }) {
+// function GuessForm({ guessWord }) {
+function GuessForm({ handleSubmitGuess }) {
   // Input state (only needed in this form, no need to lift!)
-  const [guess, setGuess] = React.useState("");
+  // const [guess, setGuess] = React.useState("");
+  const [tentativeGuess, setTentativeGuess] = React.useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    // console.log({ guess });
+    handleSubmitGuess(tentativeGuess);
+    setTentativeGuess("");
+  }
 
   return (
-    <form
-      className='guess-input-wrapper'
-      onSubmit={(event) => {
-        event.preventDefault();
-        guessWord(guess);
-        setGuess("");
-      }}>
+    <form className='guess-input-wrapper' onSubmit={handleSubmit}>
       <label htmlFor='guess-input'>Enter guess:</label>
       <input
         id='guess-input'
@@ -28,8 +32,12 @@ function GuessForm({ guessWord }) {
         pattern='[a-zA-Z]{5}'
         title='5 letter word'
         required
-        value={guess}
-        onChange={(event) => setGuess(event.target.value.toUpperCase())}
+        value={tentativeGuess}
+        onChange={(event) => {
+          // setGuess(event.target.value.toUpperCase())
+          const nextGuess = event.target.value.toUpperCase();
+          setTentativeGuess(nextGuess);
+        }}
       />
     </form>
   );

@@ -14,24 +14,26 @@ function Game() {
   // Main state
   const [guesses, setGuesses] = React.useState([]);
 
-  function guessWord(word) {
-    const nextGuess = {
-      guess: word,
-      id: crypto.randomUUID(),
-    };
+  // function guessWord(word) {
+  //   const nextGuess = {
+  //     guess: word,
+  //     id: crypto.randomUUID(),
+  //   };
+  //   // console.log(nextGuess);
+  //   const nextGuesses = [...guesses, nextGuess];
+  //   setGuesses(nextGuesses);
+  //   // console.log(nextGuesses);
+  // }
 
-    // console.log(nextGuess);
-
-    const nextGuesses = [...guesses, nextGuess];
-    setGuesses(nextGuesses);
-
-    // console.log(nextGuesses);
+  function handleSubmitGuess(tentativeGuess) {
+    setGuesses([...guesses, tentativeGuess]);
   }
 
   return (
     <>
-      {guesses.length > 0 ? <GuessResults guesses={guesses} /> : ""}
-      <GuessForm guessWord={guessWord} />
+      <GuessResults guesses={guesses} />
+      {/* <GuessForm guessWord={guessWord}  /> */}
+      <GuessForm handleSubmitGuess={handleSubmitGuess} />
     </>
   );
 }
