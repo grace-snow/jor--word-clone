@@ -30,7 +30,7 @@ function Game() {
 
   return (
     <>
-      <GuessResults guesses={guesses} />
+      {guesses.length > 0 ? <GuessResults guesses={guesses} /> : ""}
       <GuessForm guessWord={guessWord} />
     </>
   );
