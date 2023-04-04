@@ -38,6 +38,13 @@ button {
   cursor: pointer;
   text-align: left;
   color: inherit;
+  text-decoration: underline;
+  font-weight: bold;
+  transition: all 0.3s ease-out;
+}
+
+button:hover {
+  opacity: 0.9;
 }
 
 .wrapper {

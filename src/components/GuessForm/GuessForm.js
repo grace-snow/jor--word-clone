@@ -8,15 +8,12 @@ import React from "react";
  */
 
 // function GuessForm({ guessWord }) {
-function GuessForm({ handleSubmitGuess }) {
+function GuessForm({ handleSubmitGuess, gameStatus }) {
   // Input state (only needed in this form, no need to lift!)
-  // const [guess, setGuess] = React.useState("");
   const [tentativeGuess, setTentativeGuess] = React.useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    // console.log({ guess });
     handleSubmitGuess(tentativeGuess);
     setTentativeGuess("");
   }
@@ -32,6 +29,7 @@ function GuessForm({ handleSubmitGuess }) {
         pattern='[a-zA-Z]{5}'
         title='5 letter word'
         required
+        disabled={gameStatus !== "running"}
         value={tentativeGuess}
         onChange={(event) => {
           // setGuess(event.target.value.toUpperCase())
